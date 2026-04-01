@@ -1,4 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useCallback } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import { IG_LINK } from "../lib/constants";
 
 const images = [
@@ -6,35 +11,50 @@ const images = [
     label: "Ambiente del local",
     tall: true,
     src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80",
+    full: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=90",
     alt: "Interior de La Estación Barbershop",
   },
   {
     label: "Corte fade",
     tall: false,
     src: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80",
+    full: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1200&q=90",
     alt: "Corte de cabello profesional",
   },
   {
     label: "Detalle del corte",
     tall: false,
     src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80",
+    full: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=90",
     alt: "Detalle de corte fade",
   },
   {
     label: "Barbería",
     tall: false,
     src: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80",
+    full: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&q=90",
     alt: "Ambiente de la barbería",
   },
   {
     label: "Arreglo de barba",
     tall: false,
     src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
+    full: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=90",
     alt: "Arreglo de barba profesional",
   },
 ];
 
+const slides = images.map((img) => ({ src: img.full, alt: img.alt }));
+
 export default function GaleriaSection() {
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  const openAt = useCallback((i: number) => {
+    setIndex(i);
+    setOpen(true);
+  }, []);
+
   return (
     <section id="galeria" className="bg-green-deep px-6 md:px-12 py-24 md:py-32">
       <div className="max-w-6xl mx-auto">
@@ -65,23 +85,32 @@ export default function GaleriaSection() {
             gridTemplateRows: "220px 220px",
           }}
         >
-          {images.map((img) => (
-            <div
+          {images.map((img, i) => (
+            <button
               key={img.label}
-              className="relative overflow-hidden bg-green-mid"
+              onClick={() => openAt(i)}
+              className="relative overflow-hidden bg-green-mid group cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-green"
               style={img.tall ? { gridRow: "1 / 3" } : {}}
+              aria-label={`Ver imagen: ${img.alt}`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-500"
+                className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 sizes={img.tall ? "(max-width: 768px) 100vw, 55vw" : "(max-width: 768px) 50vw, 25vw"}
               />
-            </div>
+            </button>
           ))}
         </div>
       </div>
+
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        index={index}
+        slides={slides}
+      />
     </section>
   );
 }

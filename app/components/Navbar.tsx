@@ -28,9 +28,9 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <span className="text-white font-bold tracking-[0.25em] uppercase text-sm">
+      <a href="#inicio" className="text-white font-bold tracking-[0.25em] uppercase text-sm hover:text-green transition-colors">
         La Estación
-      </span>
+      </a>
 
       <ul className="hidden md:flex gap-8">
         {navLinks.map((link) => (

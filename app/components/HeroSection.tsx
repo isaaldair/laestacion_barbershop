@@ -1,4 +1,5 @@
-import { MessageCircle, Instagram } from "lucide-react";
+import Image from "next/image";
+import { WhatsAppIcon, InstagramIcon } from "./icons/SocialIcons";
 import { WA_LINK, IG_LINK } from "../lib/constants";
 
 export default function HeroSection() {
@@ -6,10 +7,20 @@ export default function HeroSection() {
     <section
       id="inicio"
       className="relative min-h-screen flex flex-col justify-end px-6 md:px-12 pb-20 overflow-hidden"
-      style={{
-        background: "linear-gradient(160deg, #1a2e22 0%, #0d1a10 45%, #080f08 100%)",
-      }}
     >
+      {/* Background photo */}
+      <Image
+        src="/inicio.png"
+        alt="La Estación Barbershop"
+        fill
+        priority
+        className="object-cover object-center"
+      />
+      {/* Dark green gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(160deg, rgba(26,46,34,0.92) 0%, rgba(13,26,16,0.88) 45%, rgba(8,15,8,0.95) 100%)" }}
+      />
       <div
         className="absolute inset-y-0 right-0 w-1/2 pointer-events-none"
         style={{ background: "linear-gradient(to left, rgba(88,104,94,0.12), transparent)" }}
@@ -51,7 +62,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="bg-green text-white text-xs font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-green/90 transition-colors flex items-center gap-3"
           >
-            <MessageCircle className="w-4 h-4" strokeWidth={2} />
+            <WhatsAppIcon className="w-4 h-4" />
             Escríbenos al WhatsApp
           </a>
           <a
@@ -60,7 +71,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="border border-white/20 text-white/70 text-xs font-medium tracking-[0.25em] uppercase px-7 py-4 hover:border-green hover:text-green transition-colors flex items-center gap-3"
           >
-            <Instagram className="w-4 h-4" strokeWidth={2} />
+            <InstagramIcon className="w-4 h-4" />
             Ver Instagram
           </a>
         </div>

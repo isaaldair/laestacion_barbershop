@@ -1,4 +1,5 @@
-import { MapPin, Clock, Phone, MessageCircle, Instagram } from "lucide-react";
+import { MapPin, Clock, Phone } from "lucide-react";
+import { WhatsAppIcon, InstagramIcon } from "./icons/SocialIcons";
 import { WA_LINK, IG_LINK } from "../lib/constants";
 
 const MAPS_EMBED =
@@ -49,7 +50,7 @@ export default function ContactoSection() {
               rel="noopener noreferrer"
               className="bg-white text-green font-bold text-xs tracking-[0.2em] uppercase px-7 py-5 flex items-center gap-3 hover:bg-white/90 transition-colors"
             >
-              <MessageCircle className="w-4 h-4" strokeWidth={2} />
+              <WhatsAppIcon className="w-4 h-4" />
               Escríbenos por WhatsApp
             </a>
             <a
@@ -58,7 +59,7 @@ export default function ContactoSection() {
               rel="noopener noreferrer"
               className="border border-white/35 text-white font-semibold text-xs tracking-[0.2em] uppercase px-7 py-4 flex items-center gap-3 hover:border-white hover:bg-white/10 transition-colors"
             >
-              <Instagram className="w-4 h-4" strokeWidth={2} />
+              <InstagramIcon className="w-4 h-4" />
               @laestacionbarbershop_
             </a>
           </div>
