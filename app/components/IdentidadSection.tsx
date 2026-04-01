@@ -1,5 +1,4 @@
 const stats = [
-  { num: "100%", desc: "Barberos con guantes · higiene total" },
   { num: "7", desc: "Días a la semana disponibles" },
   { num: "CDS", desc: "Ciudad del Saber · Panamá" },
 ];
@@ -8,7 +7,6 @@ export default function IdentidadSection() {
   return (
     <section id="identidad" className="bg-cream text-foreground px-6 md:px-12 py-24 md:py-32">
       <div className="max-w-6xl mx-auto grid md:grid-cols-[1.2fr_0.8fr] gap-20 items-center">
-        {/* Left: text */}
         <div>
           <p className="flex items-center gap-3 text-green text-xs tracking-[0.4em] uppercase mb-5">
             <span className="w-6 h-px bg-green" />
@@ -25,7 +23,6 @@ export default function IdentidadSection() {
           </p>
         </div>
 
-        {/* Right: stats */}
         <div className="flex flex-col gap-8">
           {stats.map((stat) => (
             <div key={stat.num} className="border-l-[3px] border-green pl-6">

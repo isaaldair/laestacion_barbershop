@@ -1,3 +1,4 @@
+import { MessageCircle, Camera } from "lucide-react";
 import { WA_LINK, IG_LINK } from "../lib/constants";
 
 export default function HeroSection() {
@@ -9,19 +10,15 @@ export default function HeroSection() {
         background: "linear-gradient(160deg, #1a2e22 0%, #0d1a10 45%, #080f08 100%)",
       }}
     >
-      {/* Right overlay */}
       <div
         className="absolute inset-y-0 right-0 w-1/2 pointer-events-none"
         style={{ background: "linear-gradient(to left, rgba(88,104,94,0.12), transparent)" }}
       />
-
-      {/* Vertical accent line */}
       <div
         className="absolute left-12 inset-y-0 w-px pointer-events-none hidden md:block"
         style={{ background: "linear-gradient(to bottom, transparent, rgba(88,104,94,0.4), transparent)" }}
       />
 
-      {/* Location badge */}
       <div className="absolute top-28 right-6 md:right-12 text-right border border-green/30 px-4 py-3 hidden md:block">
         <span className="text-green font-bold text-sm tracking-[0.15em] block">
           Ciudad del Saber
@@ -31,7 +28,6 @@ export default function HeroSection() {
         </span>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-2xl">
         <p className="flex items-center gap-3 text-green text-xs tracking-[0.4em] uppercase mb-5">
           <span className="w-8 h-px bg-green" />
@@ -53,22 +49,23 @@ export default function HeroSection() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green text-white text-xs font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-green/90 transition-colors flex items-center gap-2"
+            className="bg-green text-white text-xs font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-green/90 transition-colors flex items-center gap-3"
           >
-            <span aria-hidden="true">💬</span> Escríbenos al WhatsApp
+            <MessageCircle className="w-4 h-4" strokeWidth={2} />
+            Escríbenos al WhatsApp
           </a>
           <a
             href={IG_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-white/20 text-white/70 text-xs font-medium tracking-[0.25em] uppercase px-7 py-4 hover:border-green hover:text-green transition-colors flex items-center gap-2"
+            className="border border-white/20 text-white/70 text-xs font-medium tracking-[0.25em] uppercase px-7 py-4 hover:border-green hover:text-green transition-colors flex items-center gap-3"
           >
-            <span aria-hidden="true">📷</span> Ver Instagram
+            <Camera className="w-4 h-4" strokeWidth={2} />
+            Ver Instagram
           </a>
         </div>
       </div>
 
-      {/* Floating hours */}
       <div className="absolute bottom-20 right-6 md:right-12 text-right text-white/25 text-xs tracking-[0.15em] uppercase leading-loose hidden md:block">
         <span className="text-white/50 block mb-1 font-medium">Horarios</span>
         Lun – Sáb &nbsp; 10am – 7pm<br />
