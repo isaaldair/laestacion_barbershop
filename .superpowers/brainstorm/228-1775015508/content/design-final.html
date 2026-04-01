@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup Final — La Estación Barbershop</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #111; color: #fff; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: rgba(8,15,8,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(88,104,94,0.15);
+  }
+  .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+  .nav-links { display: flex; gap: 32px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .nav-links span:hover { color: #58685e; cursor: pointer; }
+  .nav-cta {
+    background: #58685e; color: #fff; padding: 10px 22px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    border: none; cursor: pointer; font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  /* HERO */
+  .hero {
+    height: 100vh; min-height: 640px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #1a2e22 0%, #0d1a10 45%, #080f08 100%);
+  }
+  .hero-overlay {
+    position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+    background: linear-gradient(to left, rgba(88,104,94,0.12), transparent);
+  }
+  .hero-line {
+    position: absolute; left: 48px; top: 0; width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(88,104,94,0.4), transparent);
+  }
+  .hero-badge {
+    position: absolute; top: 100px; right: 48px;
+    border: 1px solid rgba(88,104,94,0.4); padding: 16px 20px; text-align: right;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); line-height: 2.2;
+  }
+  .hero-badge strong { color: #58685e; display: block; font-size: 13px; font-weight: 700; letter-spacing: 2px; }
+
+  .hero-tag { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: #58685e; margin-bottom: 22px; display: flex; align-items: center; gap: 12px; }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: #58685e; }
+  .hero-title {
+    font-size: clamp(44px, 7.5vw, 88px); font-weight: 900;
+    line-height: 0.95; letter-spacing: -2px;
+    color: #fff; max-width: 680px; margin-bottom: 30px;
+  }
+  .hero-title em { color: #58685e; font-style: normal; }
+  .hero-sub {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    max-width: 360px; line-height: 1.8; margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-wa {
+    background: #58685e; color: #fff; padding: 16px 36px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    border: none; cursor: pointer; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .btn-ig {
+    border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);
+    padding: 16px 28px; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; background: transparent; cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-hours {
+    position: absolute; bottom: 80px; right: 48px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); text-align: right; line-height: 2.2;
+  }
+  .hero-hours strong { color: rgba(255,255,255,0.5); }
+
+  .divider { height: 1px; background: linear-gradient(to right, #58685e33, #58685e88, #58685e33); }
+
+  /* IDENTIDAD */
+  .identidad {
+    background: #f7f5f0; color: #111;
+    padding: 100px 48px;
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center;
+  }
+  .sec-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: #58685e; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .sec-label::before { content: ''; width: 24px; height: 1px; background: #58685e; }
+  .id-title { font-size: 42px; font-weight: 800; line-height: 1.05; margin-bottom: 28px; color: #111; }
+  .id-body { font-size: 15px; line-height: 1.9; color: #666; max-width: 480px; }
+  .id-stats { display: flex; flex-direction: column; gap: 28px; }
+  .id-stat { border-left: 3px solid #58685e; padding-left: 24px; }
+  .id-stat .num { font-size: 40px; font-weight: 900; color: #58685e; line-height: 1; }
+  .id-stat .desc { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-top: 6px; }
+
+  /* EXPERIENCIA */
+  .experiencia { background: #0d1a10; padding: 100px 48px; }
+  .exp-head { margin-bottom: 56px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .exp-title { font-size: 42px; font-weight: 800; line-height: 1.05; }
+  .exp-sub { font-size: 13px; color: rgba(255,255,255,0.4); max-width: 280px; text-align: right; line-height: 1.7; }
+  .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .exp-card { background: #111e13; padding: 40px 32px; border-top: 2px solid #58685e; }
+  .exp-num { font-size: 11px; letter-spacing: 3px; color: #58685e; margin-bottom: 24px; }
+  .exp-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 14px; }
+  .exp-card p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.45); }
+
+  /* SERVICIOS */
+  .servicios { background: #fff; padding: 100px 48px; }
+  .svc-head { margin-bottom: 56px; }
+  .svc-title { font-size: 42px; font-weight: 800; color: #111; margin-top: 12px; }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e8e8e8; border: 1px solid #e8e8e8; }
+  .svc-card { background: #fff; padding: 40px 32px; }
+  .svc-card.featured { background: #58685e; }
+  .svc-badge { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #58685e; margin-bottom: 16px; }
+  .svc-card.featured .svc-badge { color: rgba(255,255,255,0.6); }
+  .svc-name { font-size: 22px; font-weight: 800; color: #111; margin-bottom: 12px; }
+  .svc-card.featured .svc-name { color: #fff; }
+  .svc-desc { font-size: 13px; line-height: 1.8; color: #888; margin-bottom: 28px; }
+  .svc-card.featured .svc-desc { color: rgba(255,255,255,0.65); }
+  .svc-price { font-size: 36px; font-weight: 900; color: #58685e; }
+  .svc-price span { font-size: 13px; font-weight: 400; color: #bbb; }
+  .svc-card.featured .svc-price { color: #fff; }
+  .svc-card.featured .svc-price span { color: rgba(255,255,255,0.5); }
+
+  /* GALERÍA */
+  .galeria { background: #0a0f0a; padding: 100px 48px; }
+  .gal-head { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .gal-title { font-size: 42px; font-weight: 800; }
+  .gal-insta { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #58685e; }
+  .gal-grid { display: grid; grid-template-columns: 2.2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 4px; }
+  .gal-cell { background: #1a2e1a; display: flex; align-items: center; justify-content: center; }
+  .gal-cell:first-child { grid-row: 1 / 3; background: #152215; }
+  .gal-cell-label { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.18); text-transform: uppercase; text-align: center; line-height: 2; }
+
+  /* CONTACTO */
+  .contacto { background: #58685e; padding: 100px 48px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; }
+  .ct-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .ct-label::before { content: ''; width: 24px; height: 1px; background: rgba(255,255,255,0.5); }
+  .ct-title { font-size: 48px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 44px; }
+  .ct-rows { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
+  .ct-row { display: flex; gap: 16px; }
+  .ct-icon { font-size: 16px; margin-top: 2px; opacity: 0.7; }
+  .ct-info-text strong { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.55); display: block; margin-bottom: 4px; }
+  .ct-info-text span { font-size: 14px; color: #fff; line-height: 1.7; }
+  .ct-btns { display: flex; flex-direction: column; gap: 12px; }
+  .cta-wa { background: #fff; color: #58685e; padding: 18px 28px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+  .cta-ig { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 17px 28px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+  .map-box { background: rgba(0,0,0,0.2); height: 380px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); }
+  .map-box span { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.25); text-transform: uppercase; }
+
+  footer { background: #080f08; padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(88,104,94,0.15); }
+  .ft-logo { font-size: 13px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .ft-logo span { color: #58685e; }
+  .ft-copy { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+
+  .sn { text-align:center; padding:7px; background:#58685e22; font-size:10px; color:#58685e; letter-spacing:3px; text-transform:uppercase; border-top: 1px solid #58685e33; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">La Estación</div>
+  <div class="nav-links">
+    <span>Servicios</span>
+    <span>Experiencia</span>
+    <span>Galería</span>
+    <span>Contacto</span>
+  </div>
+  <button class="nav-cta">Reservar cita</button>
+</nav>
+
+<!-- HERO -->
+<div class="sn">① HERO</div>
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-line"></div>
+  <div class="hero-badge">
+    <strong>Ciudad del Saber</strong>
+    Panamá<br>
+    Barbershop
+  </div>
+  <div class="hero-tag">Barbershop · Est. Panamá</div>
+  <h1 class="hero-title">El corte<br>que<br><em>mereces.</em></h1>
+  <p class="hero-sub">Precisión, estilo y un ambiente que te hace volver. En el corazón de Ciudad del Saber.</p>
+  <div class="hero-actions">
+    <button class="btn-wa">💬 Escríbenos al WhatsApp</button>
+    <button class="btn-ig">📷 Ver Instagram</button>
+  </div>
+  <div class="hero-hours">
+    <strong>Horarios</strong><br>
+    Lun – Sáb &nbsp; 10am – 7pm<br>
+    Domingo &nbsp;&nbsp;&nbsp; 10am – 5pm
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IDENTIDAD -->
+<div class="sn">② IDENTIDAD</div>
+<section class="identidad">
+  <div>
+    <div class="sec-label">Quiénes somos</div>
+    <h2 class="id-title">Más que una<br>barbería.</h2>
+    <p class="id-body">La Estación nació en Ciudad del Saber — una de las zonas más privilegiadas de Panamá. Un espacio rodeado de naturaleza donde cada detalle está pensado para que tu visita sea una experiencia completa, desde el ambiente hasta el último detalle del corte.</p>
+  </div>
+  <div class="id-stats">
+    <div class="id-stat">
+      <div class="num">100%</div>
+      <div class="desc">Barberos con guantes · higiene total</div>
+    </div>
+    <div class="id-stat">
+      <div class="num">7</div>
+      <div class="desc">Días a la semana disponibles</div>
+    </div>
+    <div class="id-stat">
+      <div class="num">CDS</div>
+      <div class="desc">Ciudad del Saber · Panamá</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<div class="sn">③ LA EXPERIENCIA</div>
+<section class="experiencia">
+  <div class="exp-head">
+    <div>
+      <div class="sec-label" style="color:#58685e">La diferencia</div>
+      <h2 class="exp-title">Por qué La<br>Estación.</h2>
+    </div>
+    <p class="exp-sub">No es solo un corte. Es el ambiente, el detalle y el lugar.</p>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-num">01</div>
+      <h3>🌿 Ambiente natural</h3>
+      <p>Plantas reales en cada rincón del local. Un espacio vivo, relajado y completamente único en Panamá.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-num">02</div>
+      <h3>🧤 Higiene sin compromisos</h3>
+      <p>Nuestros barberos trabajan con guantes en cada servicio. Porque la limpieza es parte del estilo.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-num">03</div>
+      <h3>📍 Zona exclusiva</h3>
+      <p>En Ciudad del Saber, el hub de innovación de Panamá. Fácil acceso, ambiente tranquilo, clientela selecta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<div class="sn">④ SERVICIOS & PRECIOS</div>
+<section class="servicios">
+  <div class="svc-head">
+    <div class="sec-label" style="color:#58685e">Lo que ofrecemos</div>
+    <h2 class="svc-title">Servicios</h2>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-badge">Clásico</div>
+      <div class="svc-name">Corte de Cabello</div>
+      <div class="svc-desc">Fade, tijera o clásico. Lavado y styling incluido. El corte que te define.</div>
+      <div class="svc-price">$XX <span>/ servicio</span></div>
+    </div>
+    <div class="svc-card featured">
+      <div class="svc-badge">Más popular</div>
+      <div class="svc-name">Corte + Barba</div>
+      <div class="svc-desc">El combo completo. Corte, perfilado y arreglo de barba con navaja.</div>
+      <div class="svc-price">$XX <span>/ servicio</span></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge">Detalle</div>
+      <div class="svc-name">Arreglo de Barba</div>
+      <div class="svc-desc">Perfilado, alineación y acabado profesional. Solo la barba.</div>
+      <div class="svc-price">$XX <span>/ servicio</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<div class="sn">⑤ GALERÍA</div>
+<section class="galeria">
+  <div class="gal-head">
+    <div>
+      <div class="sec-label">Nuestro trabajo</div>
+      <h2 class="gal-title">La Estación<br>en imágenes.</h2>
+    </div>
+    <div class="gal-insta">↗ Ver más en Instagram</div>
+  </div>
+  <div class="gal-grid">
+    <div class="gal-cell"><div class="gal-cell-label">Foto principal<br>ambiente / local</div></div>
+    <div class="gal-cell"><div class="gal-cell-label">Corte 1</div></div>
+    <div class="gal-cell"><div class="gal-cell-label">Corte 2</div></div>
+    <div class="gal-cell"><div class="gal-cell-label">Plantas /<br>detalle local</div></div>
+    <div class="gal-cell"><div class="gal-cell-label">Barba / fade</div></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<div class="sn">⑥ CONTACTO</div>
+<section class="contacto">
+  <div>
+    <div class="ct-label">Visítanos</div>
+    <h2 class="ct-title">¿Listo para<br>tu cita?</h2>
+    <div class="ct-rows">
+      <div class="ct-row">
+        <span class="ct-icon">📍</span>
+        <div class="ct-info-text">
+          <strong>Dirección</strong>
+          <span>Ciudad del Saber, Panamá</span>
+        </div>
+      </div>
+      <div class="ct-row">
+        <span class="ct-icon">🕐</span>
+        <div class="ct-info-text">
+          <strong>Horarios</strong>
+          <span>Lun – Sáb: 10am – 7pm<br>Domingo: 10am – 5pm</span>
+        </div>
+      </div>
+      <div class="ct-row">
+        <span class="ct-icon">📱</span>
+        <div class="ct-info-text">
+          <strong>WhatsApp</strong>
+          <span>+507 6154-6401</span>
+        </div>
+      </div>
+    </div>
+    <div class="ct-btns">
+      <button class="cta-wa">💬 Escríbenos por WhatsApp</button>
+      <button class="cta-ig">📷 @laestacionbarbershop_</button>
+    </div>
+  </div>
+  <div class="map-box"><span>Google Maps — Ciudad del Saber</span></div>
+</section>
+
+<footer>
+  <div class="ft-logo">La <span>Estación</span></div>
+  <div class="ft-copy">© 2025 · Ciudad del Saber, Panamá</div>
+  <div class="ft-copy">Instagram · WhatsApp</div>
+</footer>
+
+</body>
+</html>
