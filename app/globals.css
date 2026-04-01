@@ -8,6 +8,7 @@
   --green-card:   #111e13;
   --green-light:  #a8bfa8;
   --cream:        #f7f5f0;
+  --white:        #ffffff;
   --foreground:   #111111;
   --muted:        #666666;
   --border:       #e8e8e8;
@@ -21,6 +22,7 @@
   --color-green-card:  var(--green-card);
   --color-green-light: var(--green-light);
   --color-cream:       var(--cream);
+  --color-white:       var(--white);
   --color-foreground:  var(--foreground);
   --color-muted:       var(--muted);
   --color-border:      var(--border);
@@ -34,7 +36,6 @@ html {
 
 body {
   background: var(--green-deep);
-  color: #ffffff;
+  color: var(--white);
   font-family: var(--font-geist-sans), Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
 }
