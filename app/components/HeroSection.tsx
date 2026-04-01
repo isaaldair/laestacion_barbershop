@@ -1,4 +1,4 @@
-import { MessageCircle, Camera } from "lucide-react";
+import { MessageCircle, Instagram } from "lucide-react";
 import { WA_LINK, IG_LINK } from "../lib/constants";
 
 export default function HeroSection() {
@@ -60,7 +60,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="border border-white/20 text-white/70 text-xs font-medium tracking-[0.25em] uppercase px-7 py-4 hover:border-green hover:text-green transition-colors flex items-center gap-3"
           >
-            <Camera className="w-4 h-4" strokeWidth={2} />
+            <Instagram className="w-4 h-4" strokeWidth={2} />
             Ver Instagram
           </a>
         </div>

@@ -1,4 +1,4 @@
-import { MapPin, Clock, Phone, MessageCircle, Camera } from "lucide-react";
+import { MapPin, Clock, Phone, MessageCircle, Instagram } from "lucide-react";
 import { WA_LINK, IG_LINK } from "../lib/constants";
 
 const MAPS_EMBED =
@@ -58,7 +58,7 @@ export default function ContactoSection() {
               rel="noopener noreferrer"
               className="border border-white/35 text-white font-semibold text-xs tracking-[0.2em] uppercase px-7 py-4 flex items-center gap-3 hover:border-white hover:bg-white/10 transition-colors"
             >
-              <Camera className="w-4 h-4" strokeWidth={2} />
+              <Instagram className="w-4 h-4" strokeWidth={2} />
               @laestacionbarbershop_
             </a>
           </div>
