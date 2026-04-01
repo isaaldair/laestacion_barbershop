@@ -30,7 +30,7 @@ export default function ExperienciaSection() {
               <span className="w-6 h-px bg-green" />
               La diferencia
             </p>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black leading-tight text-white">
               Por qué La<br />Estación.
             </h2>
           </div>
@@ -48,7 +48,7 @@ export default function ExperienciaSection() {
             >
               <div className="text-green text-xs tracking-[0.3em] mb-6">{card.num}</div>
               <h3 className="text-xl font-bold mb-3">
-                {card.icon} {card.title}
+                <span aria-hidden="true">{card.icon}</span> {card.title}
               </h3>
               <p className="text-white/45 text-sm leading-loose">{card.body}</p>
             </div>

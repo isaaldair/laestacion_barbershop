@@ -1,5 +1,4 @@
-const WA_LINK = "https://wa.me/50761546401";
-const IG_LINK = "https://instagram.com/laestacionbarbershop_";
+import { WA_LINK, IG_LINK } from "../lib/constants";
 
 export default function HeroSection() {
   return (
@@ -56,7 +55,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="bg-green text-white text-xs font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-green/90 transition-colors flex items-center gap-2"
           >
-            💬 Escríbenos al WhatsApp
+            <span aria-hidden="true">💬</span> Escríbenos al WhatsApp
           </a>
           <a
             href={IG_LINK}
@@ -64,7 +63,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="border border-white/20 text-white/70 text-xs font-medium tracking-[0.25em] uppercase px-7 py-4 hover:border-green hover:text-green transition-colors flex items-center gap-2"
           >
-            📷 Ver Instagram
+            <span aria-hidden="true">📷</span> Ver Instagram
           </a>
         </div>
       </div>

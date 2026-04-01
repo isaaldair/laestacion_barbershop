@@ -1,4 +1,4 @@
-const IG_LINK = "https://instagram.com/laestacionbarbershop_";
+import { IG_LINK } from "../lib/constants";
 
 const cells = [
   { label: "Ambiente / local", tall: true },
@@ -43,9 +43,9 @@ export default function GaleriaSection() {
         >
           {cells.map((cell, i) => (
             <div
-              key={i}
+              key={cell.label}
               className="bg-green-mid flex items-center justify-center"
-              style={i === 0 ? { gridRow: "1 / 3" } : {}}
+              style={cell.tall ? { gridRow: "1 / 3" } : {}}
             >
               <span className="text-white/20 text-xs tracking-[0.3em] uppercase text-center leading-loose px-4">
                 {cell.label}
