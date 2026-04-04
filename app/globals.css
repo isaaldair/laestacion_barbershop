@@ -39,3 +39,51 @@ body {
   color: var(--white);
   font-family: var(--font-geist-sans), Arial, sans-serif;
 }
+
+/* ── Hero image Ken Burns zoom ── */
+@keyframes hero-zoom {
+  from { transform: scale(1);    }
+  to   { transform: scale(1.08); }
+}
+.hero-zoom {
+  animation: hero-zoom 12s ease-in-out infinite alternate;
+}
+
+/* ── Fade up (hero content on load) ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.75s ease-out forwards;
+}
+.fade-up-1 { animation-delay: 0.1s; }
+.fade-up-2 { animation-delay: 0.25s; }
+.fade-up-3 { animation-delay: 0.4s; }
+.fade-up-4 { animation-delay: 0.6s; }
+
+/* ── Scroll reveal (secciones) ── */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* En Chrome/Edge usa scroll-driven; en Safari/Firefox anima al cargar (fallback) */
+.reveal {
+  animation: reveal 0.6s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 28%;
+}
+.reveal-delay {
+  animation: reveal 0.6s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 5% entry 33%;
+}
+
+/* Fallback para navegadores sin soporte a animation-timeline */
+@supports not (animation-timeline: view()) {
+  .reveal, .reveal-delay {
+    animation: reveal 0.7s ease-out both;
+  }
+}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LogoMark from "./LogoMark";
 import { WhatsAppIcon, InstagramIcon } from "./icons/SocialIcons";
 import { WA_LINK, IG_LINK } from "../lib/constants";
 
@@ -8,13 +9,13 @@ export default function HeroSection() {
       id="inicio"
       className="relative min-h-screen flex flex-col justify-end px-6 md:px-12 pb-20 overflow-hidden"
     >
-      {/* Background photo */}
+      {/* Background photo — Ken Burns zoom */}
       <Image
-        src="/inicio.png"
+        src="/header.jpeg"
         alt="La Estación Barbershop"
         fill
         priority
-        className="object-cover object-center"
+        className="object-cover object-center hero-zoom"
       />
       {/* Dark green gradient overlay */}
       <div
@@ -39,23 +40,34 @@ export default function HeroSection() {
         </span>
       </div>
 
-      <div className="relative z-10 max-w-2xl">
-        <p className="flex items-center gap-3 text-green text-xs tracking-[0.4em] uppercase mb-5">
-          <span className="w-8 h-px bg-green" />
-          Barbershop · Est. Panamá
-        </p>
+      {/* Logo grande — visible solo cuando el navbar es transparente */}
+      <div className="absolute top-0 left-6 md:left-12 py-4 z-10">
+        <Image
+          src="/logo.png"
+          alt="La Estación Barbershop"
+          width={220}
+          height={80}
+          className="h-16 md:h-20 w-auto object-contain"
+          priority
+        />
+      </div>
 
-        <h1 className="text-6xl md:text-8xl font-black leading-none tracking-tight text-white mb-6">
+      <div className="relative z-10 max-w-2xl">
+        <div className="mb-6 fade-up fade-up-1">
+          <LogoMark size="lg" />
+        </div>
+
+        <h1 className="text-6xl md:text-8xl font-black leading-none tracking-tight text-white mb-6 fade-up fade-up-2">
           El corte<br />que<br />
           <em className="not-italic text-green">mereces.</em>
         </h1>
 
-        <p className="text-white/45 text-sm leading-loose max-w-sm mb-12">
+        <p className="text-white/45 text-sm leading-loose max-w-sm mb-12 fade-up fade-up-3">
           Precisión, estilo y un ambiente que te hace volver.
           En el corazón de Ciudad del Saber.
         </p>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 fade-up fade-up-4">
           <a
             href={WA_LINK}
             target="_blank"

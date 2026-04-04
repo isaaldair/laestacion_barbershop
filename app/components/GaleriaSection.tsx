@@ -7,44 +7,14 @@ import "yet-another-react-lightbox/styles.css";
 import { IG_LINK } from "../lib/constants";
 
 const images = [
-  {
-    label: "Ambiente del local",
-    tall: true,
-    src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80",
-    full: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=90",
-    alt: "Interior de La Estación Barbershop",
-  },
-  {
-    label: "Corte fade",
-    tall: false,
-    src: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80",
-    full: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1200&q=90",
-    alt: "Corte de cabello profesional",
-  },
-  {
-    label: "Detalle del corte",
-    tall: false,
-    src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80",
-    full: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=90",
-    alt: "Detalle de corte fade",
-  },
-  {
-    label: "Barbería",
-    tall: false,
-    src: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80",
-    full: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&q=90",
-    alt: "Ambiente de la barbería",
-  },
-  {
-    label: "Arreglo de barba",
-    tall: false,
-    src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
-    full: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=90",
-    alt: "Arreglo de barba profesional",
-  },
+  { tall: true,  src: "/images/1.jpeg", alt: "La Estación Barbershop" },
+  { tall: false, src: "/images/2.jpeg", alt: "La Estación Barbershop" },
+  { tall: false, src: "/images/3.jpeg", alt: "La Estación Barbershop" },
+  { tall: false, src: "/images/4.jpeg", alt: "La Estación Barbershop" },
+  { tall: false, src: "/images/5.jpeg", alt: "La Estación Barbershop" },
 ];
 
-const slides = images.map((img) => ({ src: img.full, alt: img.alt }));
+const slides = images.map((img) => ({ src: img.src, alt: img.alt }));
 
 export default function GaleriaSection() {
   const [open, setOpen] = useState(false);
@@ -87,11 +57,11 @@ export default function GaleriaSection() {
         >
           {images.map((img, i) => (
             <button
-              key={img.label}
+              key={img.src}
               onClick={() => openAt(i)}
               className="relative overflow-hidden bg-green-mid group cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-green"
               style={img.tall ? { gridRow: "1 / 3" } : {}}
-              aria-label={`Ver imagen: ${img.alt}`}
+              aria-label={`Ver imagen ${i + 1}`}
             >
               <Image
                 src={img.src}

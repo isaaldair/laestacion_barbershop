@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const WA_LINK = "https://wa.me/50761546401";
 
@@ -28,8 +29,11 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <a href="#inicio" className="text-white font-bold tracking-[0.25em] uppercase text-sm hover:text-green transition-colors">
-        La Estación
+      <a
+        href="#inicio"
+        className={`transition-all duration-300 ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      >
+        <Image src="/logo.png" alt="La Estación Barbershop" width={120} height={40} className="h-8 w-auto object-contain" />
       </a>
 
       <ul className="hidden md:flex gap-8">
