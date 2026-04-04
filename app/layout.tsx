@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "La Estación Barbershop | Cortes Premium en Ciudad del Saber, Panamá",
   description:
-    "Barbería profesional en Ciudad del Saber, Panamá. Cortes de caballero, barba premium, servicios de higiene con productos premium. Abierto todos los días.",
+    "Estamos ubicados en la Ciudad del Saber, más que una Barberia, somos la parada obligatoria de tu día. Ven y danos la oportunidad de consentirte.",
   keywords: [
     "barbería panamá",
     "barbería ciudad del saber",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "La Estación Barbershop | Cortes Premium en Ciudad del Saber, Panamá",
-    description: "Barbería profesional en Ciudad del Saber, Panamá. Cortes de caballero, barba premium, servicios de higiene con productos premium. Abierto todos los días.",
+    description: "Estamos ubicados en la Ciudad del Saber, más que una Barberia, somos la parada obligatoria de tu día. Ven y danos la oportunidad de consentirte.",
     url: SITE_URL,
     siteName: "La Estación Barbershop",
     locale: "es_PA",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "La Estación Barbershop | Cortes Premium en Ciudad del Saber, Panamá",
-    description: "Barbería profesional en Ciudad del Saber, Panamá. Cortes de caballero, barba premium. Abierto todos los días.",
+    description: "Estamos ubicados en la Ciudad del Saber, más que una Barberia, somos la parada obligatoria de tu día. Ven y danos la oportunidad de consentirte.",
     images: ["/og-image.png"],
   },
 };
