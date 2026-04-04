@@ -14,7 +14,7 @@ const poppins = Poppins({
 });
 
 // Cambia esto por tu dominio real cuando lo tengas
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://laestacionbarbershop.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.laestacionbarbershop.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
