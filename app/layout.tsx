@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,14 +14,21 @@ const poppins = Poppins({
   weight: ["400", "600"],
 });
 
-// Cambia esto por tu dominio real cuando lo tengas
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.laestacionbarbershop.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "La Estación Barbershop | Ciudad del Saber, Panamá",
+  title: "La Estación Barbershop | Cortes Premium en Ciudad del Saber, Panamá",
   description:
-    "Barbería en Ciudad del Saber, Panamá. Cortes de caballero, corte de niño, barba premium y más. Abierto todos los días.",
+    "Barbería profesional en Ciudad del Saber, Panamá. Cortes de caballero, barba premium, servicios de higiene con productos premium. Abierto todos los días.",
+  keywords: [
+    "barbería panamá",
+    "barbería ciudad del saber",
+    "corte de caballero panamá",
+    "barba premium panamá",
+    "barbershop panamá",
+    "la estación barbershop",
+  ],
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -31,34 +39,36 @@ export const metadata: Metadata = {
     other: [{ rel: "manifest", url: "/site.webmanifest" }],
   },
   openGraph: {
-    title: "La Estación Barbershop",
-    description: "Barbería en Ciudad del Saber, Panamá. Cortes, barba y más.",
+    title: "La Estación Barbershop | Cortes Premium en Ciudad del Saber, Panamá",
+    description: "Barbería profesional en Ciudad del Saber, Panamá. Cortes de caballero, barba premium, servicios de higiene con productos premium. Abierto todos los días.",
     url: SITE_URL,
     siteName: "La Estación Barbershop",
     locale: "es_PA",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "La Estación Barber Shop — Ciudad del Saber, Panamá" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "La Estación Barbershop — Ciudad del Saber, Panamá" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "La Estación Barbershop",
-    description: "Barbería en Ciudad del Saber, Panamá.",
+    title: "La Estación Barbershop | Cortes Premium en Ciudad del Saber, Panamá",
+    description: "Barbería profesional en Ciudad del Saber, Panamá. Cortes de caballero, barba premium. Abierto todos los días.",
     images: ["/og-image.png"],
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "HairSalon",
-  name: "La Estación Barber Shop",
-  description: "Barbería en Ciudad del Saber, Panamá. Cortes de caballero, barba premium, primer corte para bebés y servicios extras.",
+  "@type": "LocalBusiness",
+  name: "La Estación Barbershop",
+  description: "Barbería profesional en Ciudad del Saber, Panamá con servicios de cortes de caballero, corte de niños, barba premium y más.",
   url: SITE_URL,
   telephone: "+507 6364-6860",
   image: `${SITE_URL}/og-image.png`,
   logo: `${SITE_URL}/logo.png`,
+  priceRange: "$$",
+  servesCuisine: "Barbershop Services",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Ciudad del Saber",
+    streetAddress: "Ciudad del Saber, Panamá",
     addressLocality: "Panamá",
     addressCountry: "PA",
   },
@@ -81,11 +91,10 @@ const jsonLd = {
       closes: "17:00",
     },
   ],
-  priceRange: "$5 – $17",
   currenciesAccepted: "USD",
   paymentAccepted: "Cash, Credit Card",
   sameAs: [
-    "https://instagram.com/laestacionbarbershop_",
+    "https://www.instagram.com/laestacionbarbershop_",
     "https://maps.app.goo.gl/ZNDTt7dXjnTKxMaY7",
   ],
 };
@@ -97,6 +106,7 @@ export default function RootLayout({
     <html lang="es" className={`${geistSans.variable} ${poppins.variable} scroll-smooth antialiased`}>
       <body className="min-h-screen">
         {children}
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
