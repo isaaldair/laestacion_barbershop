@@ -77,26 +77,43 @@ async function resizePng(size) {
     .toBuffer();
 }
 
+/** Genera un icono con fondo de color (para Apple, Android, favicon.png) */
+async function withBg(size, padding, out) {
+  const logoSize = Math.round(size * padding);
+  const logoBuffer = await sharp(SRC)
+    .resize(logoSize, logoSize, { fit: "contain", background: TRANSPARENT })
+    .png()
+    .toBuffer();
+
+  await sharp({ create: { width: size, height: size, channels: 4, background: BG_DARK } })
+    .composite([{ input: logoBuffer, gravity: "center" }])
+    .png()
+    .toFile(out);
+  log(out);
+}
+
 async function main() {
-  // Standard PNG icons
-  const sizes = [
-    { size: 32,  out: join(ROOT, "public", "favicon.png") },
+  // Iconos transparentes (el favicon.ico ya funciona así)
+  const transparent = [
     { size: 16,  out: join(ROOT, "public", "favicon-16x16.png") },
     { size: 32,  out: join(ROOT, "public", "favicon-32x32.png") },
     { size: 32,  out: join(ROOT, "app",    "icon.png") },
-    { size: 180, out: join(ROOT, "app",    "apple-icon.png") },
-    { size: 180, out: join(ROOT, "public", "apple-touch-icon.png") },
-    { size: 192, out: join(ROOT, "public", "android-chrome-192x192.png") },
-    { size: 512, out: join(ROOT, "public", "android-chrome-512x512.png") },
   ];
 
-  for (const { size, out } of sizes) {
+  for (const { size, out } of transparent) {
     await sharp(SRC)
       .resize(size, size, { fit: "contain", background: TRANSPARENT })
       .png()
       .toFile(out);
     log(out);
   }
+
+  // Iconos con fondo verde — se ven bien en cualquier fondo
+  await withBg(32,  0.7, join(ROOT, "public", "favicon.png"));
+  await withBg(180, 0.7, join(ROOT, "app",    "apple-icon.png"));
+  await withBg(180, 0.7, join(ROOT, "public", "apple-touch-icon.png"));
+  await withBg(192, 0.75, join(ROOT, "public", "android-chrome-192x192.png"));
+  await withBg(512, 0.75, join(ROOT, "public", "android-chrome-512x512.png"));
 
   // favicon.ico — 16x16 + 32x32 + 48x48 embedded
   // Va en app/ (Next.js App Router lo registra automáticamente)
