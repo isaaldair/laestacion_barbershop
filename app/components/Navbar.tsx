@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const WA_LINK = "https://wa.me/50761546401";
+const WA_LINK = "https://wa.me/50763646860";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
